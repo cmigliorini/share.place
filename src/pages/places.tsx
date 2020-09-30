@@ -105,8 +105,7 @@ export const Places: React.FC<PageProps> = () => {
       loading,
       error
     } = useQuery<GetMyPlacesTypes.GetMyPlaces>(
-      GET_MY_PLACES,
-      { fetchPolicy: "network-only" });
+      GET_MY_PLACES);
     if (loading) return <Loading />;
     if (error) {
       // FIXME: this is an ugly workaround to current behaviour: localStorage is read after being written
