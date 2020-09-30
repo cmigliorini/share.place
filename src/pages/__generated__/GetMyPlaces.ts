@@ -17,6 +17,9 @@ export interface GetMyPlaces_me {
   __typename: "User";
   id: string;
   email: string;
+  firstName: string | null;
+  lastName: string | null;
+  company: string | null;
   places: GetMyPlaces_me_places[];
 }
 

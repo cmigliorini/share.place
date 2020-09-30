@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled, { css } from 'react-emotion';
-import { size } from 'polished';
+// import { size } from 'polished';
 import { colors, unit } from '../styles';
 
 import * as LoginTypes from '../pages/__generated__/Login';
@@ -41,7 +41,7 @@ export default class LoginForm extends Component<LoginFormProps, LoginFormState>
           <StyledLogo />*/}
         </Header>
         {/* <StyledRocket /> */}
-        <Heading>Language Explorer</Heading>
+        <Heading>Share-alike Place</Heading>
         {/* <StyledForm onSubmit={(e) => this.onSubmit(e)}> */}
         <form onSubmit={(e) => this.onSubmit(e)}>
           <StyledInput

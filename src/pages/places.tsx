@@ -4,6 +4,7 @@ import { Fragment } from "react";
 import  * as GetMyPlacesTypes  from "./__generated__/GetMyPlaces";
 import { RouteComponentProps } from '@reach/router';
 import { PlaceTile } from '../components/place-tile';
+import { Loading } from "../components";
 
 // import { Place } from './place';
 /*
@@ -85,6 +86,9 @@ export const GET_MY_PLACES = gql`
     me {
       id
       email
+      firstName
+      lastName
+      company
       places {
         ...PlaceTile
       }
@@ -93,7 +97,7 @@ export const GET_MY_PLACES = gql`
   ${PLACE_TILE_DATA}
 `;
 
-interface PageProps extends RouteComponentProps {};
+interface PageProps extends RouteComponentProps {}
 
 export const Places: React.FC<PageProps> = () => {
     const {
@@ -103,20 +107,28 @@ export const Places: React.FC<PageProps> = () => {
     } = useQuery<GetMyPlacesTypes.GetMyPlaces>(
       GET_MY_PLACES,
       { fetchPolicy: "network-only" });
-    if (loading) return <div>Loading</div>// <Loading />;
-    if (error) return <p>ERROR: {error.message}</p>;
+    if (loading) return <Loading />;
+    if (error) {
+      // FIXME: this is an ugly workaround to current behaviour: localStorage is read after being written
+      // but is empty and needs to be called after a time. I must have missed a dependency somewhere,
+      // causing React to either call us too early or else.
+      setTimeout(window.location.reload, 500);
+      // TODO: if there's an error for good, handle it properly
+      return <p>ERROR: {error.message}</p>;
+    }
     if (data === undefined) return <p>ERROR</p>;
   
     return (
       <Fragment>
-        <h1>My Places</h1>
+        <h1>{data.me?.firstName} {data.me?.lastName}</h1>
+        <h2>My Places</h2>
         {/* <Header>My Languages</Header> */}
         {(data.me && data.me.places && data.me.places.length) ? (
           data.me.places.map((place: any) => (
             <PlaceTile key={place.id} place={place} />
           ))
         ) : (
-          <p>You haven't acquired any language yet</p>
+          <p>You have no place yet</p>
         )}
       </Fragment>
     );
