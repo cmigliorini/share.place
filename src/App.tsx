@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { cache, isLoggedInVar } from './cache';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import { ApolloClient, HttpLink, NormalizedCacheObject } from '@apollo/client';
+import { typeDefs } from'./pages/login';
 
-export default App;
+export const App: ApolloClient<NormalizedCacheObject> = new ApolloClient({
+  cache,
+  link: new HttpLink({
+    uri: 'https://app.graphql.share.place/',
+    headers: {
+      authorization: "Bearer " + (localStorage.getItem('token') || ''),
+      // 'client-name': 'Languages Explorer [web]',
+      // 'client-version': '1.0.0',
+    },
+  }),
+  typeDefs,
+  resolvers: {},
+});
