@@ -3,6 +3,7 @@ import { Router } from '@reach/router';
 import { Places } from './places';
 import { PageContainer } from '../components';
 import { Place } from './place';
+import { Header } from '../components';
 /*
 mutation login {
   login(email:"christophe@21-5.fr", password:"PASSWORD"){
@@ -42,6 +43,7 @@ export default function Pages() {
   return (
     <Fragment>
       <PageContainer>
+        <Header />
         <Router primary={false} component={Fragment}>
           <Places path="/" />
           <Place path="place/:placeId" />

@@ -2,8 +2,8 @@ import { injectGlobal } from 'react-emotion';
 
 export const unit = 8;
 export const colors = {
-  primary: '#220a82',
-  secondary: '#14cbc4',
+  primary: '#077992',
+  secondary: '#14cbf4',
   accent: '#e535ab',
   background: '#f7f8fa',
   grey: '#d8d9e0',

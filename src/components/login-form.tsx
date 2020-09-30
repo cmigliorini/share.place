@@ -41,7 +41,7 @@ export default class LoginForm extends Component<LoginFormProps, LoginFormState>
           <StyledLogo />*/}
         </Header>
         {/* <StyledRocket /> */}
-        <Heading>Language Explorer</Heading>
+        <Heading>Share-alike Place</Heading>
         {/* <StyledForm onSubmit={(e) => this.onSubmit(e)}> */}
         <form onSubmit={(e) => this.onSubmit(e)}>
           <StyledInput
