@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
 import { Router } from '@reach/router';
 import { Places } from './places';
-import {  PageContainer } from '../components';
+import { PageContainer } from '../components';
+import { Place } from './place';
 /*
 mutation login {
   login(email:"christophe@21-5.fr", password:"PASSWORD"){
@@ -43,8 +44,8 @@ export default function Pages() {
       <PageContainer>
         <Router primary={false} component={Fragment}>
           <Places path="/" />
-          {/* <Place path="place/:placeId" />
-          <Folder path="place/:placeId/folder/:folderId" />
+          <Place path="place/:placeId" />
+          {/* <Folder path="place/:placeId/folder/:folderId" />
           <Topic path="place/:placeId/folder/:folderId" />
           <Message path="place/:placeId/folder/:folderId/message/:messageId" /> */}
         </Router>
