@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+// import { gql } from "@apollo/client";
 import { Link, RouteComponentProps } from "@reach/router";
 import React from "react";
 // import { PLACE_TILE_DATA } from '../pages/places';

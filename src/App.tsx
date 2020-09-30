@@ -1,5 +1,5 @@
 import './App.css';
-import { cache, isLoggedInVar } from './cache';
+import { cache } from './cache';
 
 import { ApolloClient, HttpLink, NormalizedCacheObject } from '@apollo/client';
 import { typeDefs } from'./pages/login';
