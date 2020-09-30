@@ -2,6 +2,7 @@ import { useQuery } from "@apollo/client";
 import { gql } from "@apollo/client/core";
 import { Link, RouteComponentProps } from "@reach/router";
 import React, { Fragment } from "react";
+import { Loading } from "../components";
 import * as GetPlaceTypes from "./__generated__/GetPlace"
 interface PlaceProps extends RouteComponentProps {
     placeId?: any
@@ -34,7 +35,7 @@ export const Place: React.FC<PlaceProps> = ({ placeId }) => {
         error
     } = useQuery<GetPlaceTypes.GetPlace, GetPlaceTypes.GetPlaceVariables>(
         GET_PLACE, { variables: { placeId } });
-    if (loading) return <div>Loading</div>// <Loading />;
+    if (loading) return <Loading />;
     if (error) return <p>ERROR: {error.message}</p>;
     if (data === undefined) return <p>ERROR</p>;
 

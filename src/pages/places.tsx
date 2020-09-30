@@ -4,6 +4,7 @@ import { Fragment } from "react";
 import  * as GetMyPlacesTypes  from "./__generated__/GetMyPlaces";
 import { RouteComponentProps } from '@reach/router';
 import { PlaceTile } from '../components/place-tile';
+import { Loading } from "../components";
 
 // import { Place } from './place';
 /*
@@ -106,7 +107,7 @@ export const Places: React.FC<PageProps> = () => {
     } = useQuery<GetMyPlacesTypes.GetMyPlaces>(
       GET_MY_PLACES,
       { fetchPolicy: "network-only" });
-    if (loading) return <div>Loading</div>// <Loading />;
+    if (loading) return <Loading />;
     if (error) return <p>ERROR: {error.message}</p>;
     if (data === undefined) return <p>ERROR</p>;
   
