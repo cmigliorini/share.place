@@ -108,7 +108,14 @@ export const Places: React.FC<PageProps> = () => {
       GET_MY_PLACES,
       { fetchPolicy: "network-only" });
     if (loading) return <Loading />;
-    if (error) return <p>ERROR: {error.message}</p>;
+    if (error) {
+      // FIXME: this is an ugly workaround to current behaviour: localStorage is read after being written
+      // but is empty and needs to be called after a time. I must have missed a dependency somewhere,
+      // causing React to either call us too early or else.
+      setTimeout(window.location.reload, 500);
+      // TODO: if there's an error for good, handle it properly
+      return <p>ERROR: {error.message}</p>;
+    }
     if (data === undefined) return <p>ERROR</p>;
   
     return (
