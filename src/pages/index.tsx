@@ -3,6 +3,7 @@ import { Router } from '@reach/router';
 import { Places } from './places';
 import { PageContainer } from '../components';
 import { Place } from './place';
+import { Folder } from './folder';
 import { Header } from '../components';
 /*
 mutation login {
@@ -47,8 +48,8 @@ export default function Pages() {
         <Router primary={false} component={Fragment}>
           <Places path="/" />
           <Place path="place/:placeId" />
-          {/* <Folder path="place/:placeId/folder/:folderId" />
-          <Topic path="place/:placeId/folder/:folderId" />
+          <Folder path="place/:placeId/folder/:folderId" />
+          {/* <Topic path="place/:placeId/folder/:folderId" />
           <Message path="place/:placeId/folder/:folderId/message/:messageId" /> */}
         </Router>
       </PageContainer>

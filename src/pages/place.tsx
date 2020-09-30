@@ -4,6 +4,8 @@ import { Link, RouteComponentProps } from "@reach/router";
 import React, { Fragment } from "react";
 import { Loading } from "../components";
 import * as GetPlaceTypes from "./__generated__/GetPlace"
+import FolderIcon from '@material-ui/icons/Folder';
+
 interface PlaceProps extends RouteComponentProps {
     placeId?: any
 }
@@ -42,6 +44,6 @@ export const Place: React.FC<PlaceProps> = ({ placeId }) => {
     return <Fragment><Link to="/">back to Places</Link><div>
         <h1>Place {data.place?.name}</h1>
         {data.place?.folders.map((folder) =>
-            <p><Link to={`place/${placeId}/folder/${folder.id}`}> Folder {folder && folder.name}</Link></p>)}
+            <p><FolderIcon /><Link to={`folder/${folder.id}`}> {folder && folder.name}</Link></p>)}
     </div></Fragment>;
 };
